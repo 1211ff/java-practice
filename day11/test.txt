@@ -1,0 +1,54 @@
+File(String pathname)                // 根据路径字符串创建
+File(String parent, String child)    // 父路径 + 子名称
+File(File parent, String child)      // 父File对象 + 子名称
+方法	作用
+boolean exists()	文件或目录是否存在
+boolean isFile()	是否为普通文件
+boolean isDirectory()	是否为文件夹
+boolean isAbsolute()	是否是绝对路径
+方法	作用	备注
+boolean createNewFile() throws IOException	创建文件	文件已存在返回 false；不能创建文件夹
+boolean mkdir()	创建单层目录	上级不存在则创建失败
+boolean mkdirs()	创建多级目录	推荐使用，自动创建所有不存在父目录
+boolean delete()
+
+String getName()        // 获取文件名/文件夹名
+String getPath()        // 获取构造传入路径
+String getAbsolutePath()// 获取绝对路径
+File getParentFile()    // 获取父目录File对象（推荐）
+遍历
+String[] list()                 // 返回目录下所有子名称数组
+File[] listFiles()              // 返回目录下所有子File对象数组（常用）
+
+
+(1)FileInputStream 文件字节输入流
+作用：读取文件数据
+构造方法
+
+FileInputStream(String path)
+FileInputStream(File file)
+文件不存在 → 抛出 FileNotFoundException
+
+读取方法
+int read()                // 读取1个字节；读到末尾返回 -1
+int read(byte[] b)        // 批量读入字节数组，返回实际读取长度；末尾-1
+int read(byte[] b,int off,int len) // 指定数组位置存放数据
+void close() throws IOException // 关闭流，释放资源
+
+
+（2）FileOutputStream 文件字节输出流
+作用：向文件写入数据
+构造方法
+
+FileOutputStream(String path)         // 覆盖写入
+FileOutputStream(String path,boolean append) // append=true 追加写入
+FileOutputStream(File file)
+FileOutputStream(File file,boolean append)
+⚠️ 文件不存在：自动创建文件；上级文件夹不存在会报错
+核心写入方法
+
+void write(int b)                  // 写入单个字节
+void write(byte[] b)               // 写入整个字节数组
+void write(byte[] b,int off,int len)// 写入数组指定区间
+void flush()                       // 刷新缓冲区（字节流一般不强制，但规范写上更好）
+void close() throws IOException    // 关闭流
