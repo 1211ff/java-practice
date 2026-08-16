@@ -20,7 +20,7 @@ import java.util.Scanner;
  *       IDEA 的运行工作目录默认就是项目根目录）。
  */
 public class TestDemo11 {
-
+    //File.separator 系统路径分隔符
     /** 演示目录：项目根目录下的 day11/test */
     private static final String DIR = "day11" + File.separator + "test";
     /** 源文件 */
@@ -41,7 +41,6 @@ public class TestDemo11 {
         // ===== 4. 复制文件（字节流）=====
         copyDemo();
     }
-
     /** 1. File 类：目录创建、文件创建、判断、遍历 */
     private static void fileDemo() {
         System.out.println("===== 1. File 类基本操作 =====");
